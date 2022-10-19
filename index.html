@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work_page</title>
+    <!-- SCROLLING EFFECT -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            text-decoration: none;
+            box-sizing: border-box;
+            list-style: none;
+            scroll-behavior: smooth;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        :root {
+            --primary-color: #000000;
+            --text-color: #FF8833;
+            --text2-color: #fff;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: rgb(44, 35, 35);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #545454;
+            border-radius: 8px;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 100002;
+            display: flex;
+            align-items: center;
+            color: white;
+            padding: 18px 50px;
+            transition: .5s;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .header-left {
+            width: 37%;
+            display: flex;
+            justify-content: start;
+        }
+
+        .header-middle {
+            width: 25%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .header-right {
+            width: 35%;
+            display: flex;
+            justify-content: end;
+        }
+
+        .header.sticky {
+            background-color: var(--primary-color);
+            padding: 8px 40px;
+            transition: .3s all linear;
+            box-shadow: 2px 2px 3px rgb(48, 46, 46);
+        }
+
+        #menu-icon {
+            display: none;
+        }
+
+        .navbar {
+            display: flex;
+            gap: 2.2rem;
+        }
+
+        .navbar a {
+            color: var(--text2-color);
+            transition: .2s all linear;
+            font-size: 1.1rem;
+        }
+
+        .navbar a:hover {
+            color: var(--text-color);
+        }
+
+        .btn1 {
+            display: none;
+        }
+
+        .active {
+            border-bottom: 2px solid var(--text-color);
+            color: var(--text-color) !important;
+        }
+
+        .btn {
+            border: 2px solid var(--text-color);
+            border-radius: 6px;
+            color: var(--text-color);
+            padding: 12px 35px;
+            font-size: 1.1rem;
+            transition: .2s all linear;
+        }
+
+        .btn:hover {
+            background-color: var(--text-color);
+            color: var(--text2-color);
+        }
+
+        @media (max-width:1387px) {
+            .navbar {
+                gap: 2rem;
+            }
+
+            .navbar a {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width:1266px) {
+            .navbar {
+                gap: 1.8rem;
+            }
+
+            .navbar a {
+                font-size: .9rem;
+            }
+
+            .logo img {
+                width: 26vw;
+            }
+
+            .btn {
+                padding: 12px 35px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width:1151px) {
+            .navbar {
+                gap: 1.3rem;
+            }
+
+            .logo img {
+                width: 24vw;
+            }
+
+            .header-left {
+                width: 38%;
+            }
+        }
+
+        @media (max-width:975px) {
+            .header {
+                padding: 18px 40px;
+            }
+
+            .navbar {
+                gap: 1.4rem;
+            }
+
+            .navbar a {
+                font-size: .8rem;
+            }
+
+            .logo img {
+                width: 23vw;
+            }
+
+            .btn {
+                padding: 10px 22px;
+                font-size: .9rem;
+            }
+
+            .header-left {
+                width: 45%;
+            }
+
+            .header-middle {
+                width: 36%;
+                display: flex;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width:850px) {
+            .logo img {
+                width: 220px;
+            }
+
+            #menu-icon {
+                display: initial;
+                font-size: 2rem;
+                z-index: 19999;
+            }
+
+            .navbar {
+                height: 100vh;
+                width: 50%;
+                position: absolute;
+                left: -527px;
+                bottom: 0;
+                top: 0;
+                background-color: rgba(22, 22, 22, 0.938);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                row-gap: 2.4rem;
+                transition: .3s all linear;
+            }
+
+            .navbar a {
+                font-size: 1.3rem;
+
+            }
+
+            .navbar.active1 {
+                left: 0;
+            }
+
+            .header-left {
+                width: 38%;
+            }
+        }
+
+        @media (max-width:692px) {
+            .header {
+                padding: 15px 20px;
+            }
+
+            .btn {
+                padding: 5px 25px;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width:630px) {
+            .header {
+                padding: 13px 18px;
+            }
+
+            .navbar {
+                width: 50%;
+            }
+
+            .header.sticky {
+                padding: 8px 20px;
+            }
+
+            .btn {
+                padding: 6px 15px;
+                font-size: 1rem;
+            }
+
+            .header-middle {
+                width: 49%;
+            }
+        }
+
+        @media (max-width:520px) {
+            .navbar a {
+                font-size: 1rem;
+            }
+
+            .btn {
+                display: none;
+            }
+
+            .container .btn1 {
+                display: initial;
+                position: absolute;
+                bottom: 10px;
+                border: 2px solid var(--text-color);
+                border-radius: 6px;
+                color: var(--text-color) !important;
+                padding: 8px 7vw;
+                font-size: 1.1rem;
+                transition: .2s all linear;
+            }
+
+            .header-middle {
+                position: absolute;
+                right: 14px;
+            }
+
+            .header {
+                padding: 20px 9px;
+            }
+
+        }
+
+        @media (max-width:384px) {
+            .logo img {
+                width: 180px;
+            }
+
+            .navbar {
+                width: 70%;
+            }
+        }
+    
+
+        .section,
+        .section2,
+        .section3,
+        .section4,
+        .section5 {
+            height: 100vh;
+            width: 100%;
+            background-color: #171717;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            clip: rect(0, auto, auto, 0);
+        }
+
+        .fixed,
+        .fixed1 {
+            height: 90vh;
+            width: 91%;
+            text-align: start;
+            position: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .left {
+            width: 60%;
+        }
+
+        left h1 {
+            font-size: 1.6rem;
+        }
+
+        .left p {
+            color: #fff;
+            font-size: 1.3rem;
+        }
+
+        .right {
+            /* background-color: red; */
+            /* height: 500px; */
+            width: 268px;
+            background-color: transparent;
+            border-radius: 13px;
+        }
+
+        .hero {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .hero>h1 {
+            display: block;
+            align-self: center;
+            font-size: 12vw;
+            line-height: 12vw;
+            color: #ff8833;
+        }
+
+        .trigger {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .trigger1 {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .trigger2 {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .hero>h1 {
+            display: block;
+            align-self: center;
+            font-size: 12vw;
+            line-height: 12vw;
+            color: #ff8833;
+        }
+
+        .trigger>#heading2 {
+            display: block;
+            align-self: center;
+            font-size: 12vw;
+            line-height: 12vw;
+            color: #ff8833;
+        }
+
+        .trigger1>#heading3 {
+            display: block;
+            align-self: center;
+            font-size: 12vw;
+            line-height: 12vw;
+            color: #ff8833;
+        }
+
+        .trigger2>#heading4 {
+            display: block;
+            align-self: center;
+            font-size: 12vw;
+            line-height: 12vw;
+            color: #ff8833;
+        }
+
+        .section {
+            z-index: 1;
+            height: 200vh;
+            position: absolute;
+        }
+
+        .section .fixed {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            bottom: 560px;
+        }
+
+        .section2 {
+            top: 200vh;
+            z-index: 2;
+            height: 250vh;
+            background-color: #171717;
+            position: absolute;
+            justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .bottom_box {
+            position: absolute;
+            top: 31vh;
+            margin-bottom: 10px;
+            width: 90%;
+            height: 62vh;
+            /* background-color: red; */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .box1,.box2,.box3,.box4{
+            position: sticky;
+            transition: .2s all linear;
+            opacity: 0;
+        }
+        .box4{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .section3,
+        .section4 {
+            position: absolute;
+            top: 450vh;
+            z-index: 2;
+            height: 250vh;
+            background-color: #171717;
+            position: absolute;
+            justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .section5 {
+            position: absolute;
+            top: 950vh;
+            z-index: 2;
+            height: 250vh;
+            background-color: #171717;
+            position: absolute;
+            justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .section4 {
+            top: 700vh;
+        }
+
+
+        .section3 .fixed,
+        .section4 .fixed,
+        .section5 .fixed {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .bottom_box p {
+            font-size: 1.3rem;
+            color: #fff;
+        }
+
+        .icons_box {
+            height: 150px;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .icons {
+            height: 100%;
+
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-left menu">
+            <i class='bx bx-menu' id="menu-icon"></i>
+            <div class="ul">
+                <ul class="navbar" id="navbar">
+                    <li><a href="#home" class="active navbar-btn">Home</a></li>
+                    <li><a href="#service" class="navbar-btn">Service</a></li>
+                    <li><a href="#about" class="navbar-btn">About Us</a></li>
+                    <li><a href="#work" class="navbar-btn">Work</a></li>
+                    <li><a href="" class="navbar-btn">Blogs</a></li>
+                    <a class="btn1" href="">
+                        Let's Talk
+                    </a>
+                </ul>
+
+            </div>
+        </div>
+        <div class="header-middle">
+
+            <a href="" class="logo" id="logo">
+                <!-- <img src="imgs/logo.png" alt=""> -->
+            </a>
+        </div>
+        <div class="header-right">
+            <a class="btn" href="">
+                Let's Talk
+            </a>
+        </div>
+    </header>
+    <div class="section">
+        <div class="fixed" id="animationWindow">
+            <div class="box">
+                <div class="left">
+
+                    <img src="celereate.png" alt="">
+                    <h2 style="color: #ff8833;">Not Just to create a Store but a vibe For the Visitors.</h2>
+                    <p>
+                        Celereate is a high-profile store in the United States, and the client was more concerned with
+                        the
+                        best
+                        website design and a good sales marketing campaign to increase sales. <br>
+
+                        Webreate assisted Celereate, an e-commerce website, in developing a stunningly designed brand
+                        and
+                        image
+                        using multiple templates and page layouts. We helped the company with header tag optimization
+                        and
+                        internal linking. All the products and their names were optimized using SEO best practices after
+                        keyword
+                        research.  <br>
+
+                        We felt it was critical for a company like Celereate, an e-commerce website, to have as many
+                        online
+                        footprints as possible because its primary business is based on online sales. The goal was to
+                        create
+                        a
+                        unified interactive website that could open interactive product pages to provide end users with
+                        all
+                        relevant information about their purchases.
+
+                    </p>
+                </div>
+                <div class="right" id="right"></div>
+            </div>
+        </div>
+    </div>
+    <div class="section2 section-1">
+        <div class="fixed">
+            <div class="hero" id="hero">
+                <h1>PROBLEM</h1>
+            </div>
+        </div>
+        <div class="bottom_box box1" >
+            <p>
+
+                Creating an e-commerce website is always a difficult task. The website had to be designed
+                with the US customer in mind. The website was quite heavy, and it needed to be user-friendly while
+                also
+                being created in a short time. <br><br>
+
+                The company needed to create a unique and seamless website to showcase its products.The website was
+                large
+                and took a long time to load. It was critical to creating a seamless digital environment. <br><br>
+
+                The main issue was categorizing the products because the client specifically targeted the US holiday
+                season.
+                As a result, the pages and clothes should be classified appropriately. It wasn't easy to categorize
+                and
+                develop a conversion rate optimization strategy for a competitive US market.
+            </p>
+            <div class="icons_box">
+                <div class="icons" id="icon1"></div>
+                <div class="icons" id="icon2"></div>
+                <div class="icons" id="icon3"></div>
+                <div class="icons" id="icon4"></div>
+            </div>
+        </div>
+    </div>
+    <div class="section3">
+        <div class="fixed">
+            <div class="trigger" id="trigger">
+                <h2 id="heading2">PROBLEM2</h2>
+            </div>
+        </div>
+        <div class="bottom_box box2">
+            <p>
+                The value of e-commerce sales is expected to reach $7.4 trillion by 2025, with the United States
+                leading the way. It was challenging to develop a strategy for such a competitive market. <br><br>
+
+                • Most visitors are mobile users, and creating such a big website for mobile was difficult. The
+                website must be responsive to mobile devices, also.<br><br>
+
+                • It was challenging to keep the website from bombarding users' screens with unnecessary pop-ups and
+                notifications so that they could enjoy a seamless experience.<br><br>
+
+                • Adding a high-quality product image was critical, and adding genuine and authentic information was
+                difficult.<br><br>
+
+                • Including a smooth and trustworthy payment process is an essential step for any e-commerce
+                website.<br><br>
+
+                • Celereate needed to increase its sales and conversion rate. Creating a well-crafted SEO strategy
+                that could lead to conversion was critical.<br><br>
+            </p>
+        </div>
+    </div>
+    <div class="section4">
+        <div class="fixed">
+            <div class="trigger1">
+                <h2 id="heading3">PROBLEM3</h2>
+            </div>
+        </div>
+        <div class="bottom_box box3">
+            <p>
+                There will always be issues when creating a website, but we must overcome them to provide the best
+                solution to the customer. Used WooCommerce capabilities to the fullest to create a fully functional
+                online shopping website for selling clothes and other props. <br><br>
+
+                We built an eCommerce website on the WordPress platform, which has a very user-friendly backend for
+                making website updates. We created multiple webpage templates to ensure the content was consistent
+                with the most recent web development and design best practices. All product details were integrated
+                while keeping Google's latest SEO practices in mind. <br><br>
+
+                We linked the website to Google Analytics conversions and goals, allowing clients to optimize their
+                ongoing ad spending. Retargeting was also set up to send messages to customers who abandoned their
+                shopping carts without making a purchase.
+
+            </p>
+        </div>
+    </div>
+    <div class="section5">
+        <div class="fixed">
+            <div class="trigger2">
+                <h2 id="heading4">PROBLEM4</h2>
+            </div>
+        </div>
+        <div class="bottom_box box4">
+            <p>
+
+                • We have optimized the website to target US-based users, resulting in a 20% increase in online
+                sales rather than the client's 10% sales requirement. <br><br>
+
+                • We Trained team members for working on the Celereate website on how to work with the WooCommerce
+                theme and update products accordingly. <br><br>
+
+                • The time spent on the online store also increased by 12%. <br><br>
+
+                • The most important aspect was that we could reduce the website's bounce rate to 40%, which was the
+                most significant achievement.  <br><br>
+
+
+            </p>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/CSSRulePlugin.min.js"></script>
+    <!-- SCROLLING EFFECT -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        let header = document.querySelector('header')
+        let menu = document.querySelector('#menu-icon')
+        let navbar = document.querySelector('.navbar')
+
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('sticky', window.scrollY > 0)
+        })
+        menu.onclick = () => {
+            menu.classList.toggle('bx-x')
+            navbar.classList.toggle('active1')
+        }
+        window.onscroll = () => {
+            menu.classList.remove('bx-x')
+            navbar.classList.remove('active1')
+        }
+
+        AOS.init({
+            offset: 150,
+            once: false,
+            mirror: false,
+        });
+
+
+
+        ScrollTrigger.create({
+            trigger: "#animationWindow",
+            start: "top top",
+            end: "+=100%",
+            pin: false
+        });
+        LottieScrollTrigger({
+            target: "#animationWindow #right",
+            path: "mobile.json",
+            speed: "medium",
+            start: "top top",
+            end: "+=85%",
+            pin: false,
+            markers: false,
+            scrub: true
+        });
+        var icon1 = document.getElementById('icon1')
+        var animation1 = bodymovin.loadAnimation({
+            container: document.getElementById('icon1'), // required
+            path: 'appdevbig.json',
+            renderer: 'svg',
+            loop: false,
+            autoplay: false,
+            name: "Demo Animation",
+        });
+        icon1.addEventListener('mouseenter', () => {
+            animation1.setDirection(1);
+            animation1.play();
+        });
+
+        icon1.addEventListener('mouseleave', () => {
+            animation1.setDirection(-1);
+            animation1.play();
+        });
+        var animation2 = bodymovin.loadAnimation({
+            container: document.getElementById('icon2'), // required
+            path: 'appdevbig.json',
+            renderer: 'svg',
+            loop: false,
+            autoplay: false,
+            name: "Demo Animation",
+        });
+        icon2.addEventListener('mouseenter', () => {
+            animation2.setDirection(1);
+            animation2.play();
+        });
+
+        icon2.addEventListener('mouseleave', () => {
+            animation2.setDirection(-1);
+            animation2.play();
+        });
+        var animation3 = bodymovin.loadAnimation({
+            container: document.getElementById('icon3'), // required
+            path: 'appdevbig.json',
+            renderer: 'svg',
+            loop: false,
+            autoplay: false,
+            name: "Demo Animation",
+        });
+        icon3.addEventListener('mouseenter', () => {
+            animation3.setDirection(1);
+            animation3.play();
+        });
+
+        icon3.addEventListener('mouseleave', () => {
+            animation3.setDirection(-1);
+            animation3.play();
+        });
+        var animation4 = bodymovin.loadAnimation({
+            container: document.getElementById('icon4'), // required
+            path: 'appdevbig.json',
+            renderer: 'svg',
+            loop: false,
+            autoplay: false,
+            name: "Demo Animation",
+        });
+        icon4.addEventListener('mouseenter', () => {
+            animation4.setDirection(1);
+            animation4.play();
+        });
+
+        icon4.addEventListener('mouseleave', () => {
+            animation4.setDirection(-1);
+            animation4.play();
+        });
+
+
+        function LottieScrollTrigger(vars) {
+            let playhead = { frame: 0 },
+                target = gsap.utils.toArray(vars.target)[0],
+                speeds = { slow: "+=2000", medium: "+=1000", fast: "+=500" },
+                st = {
+                    trigger: target,
+                    pin: true,
+                    start: "top top",
+                    end: speeds[vars.speed] || "+=1000",
+                    scrub: 1
+                },
+                animation = lottie.loadAnimation({
+                    container: target,
+                    renderer: vars.renderer || "svg",
+                    loop: false,
+                    autoplay: false,
+                    path: vars.path
+                });
+            for (let p in vars) {
+                st[p] = vars[p];
+            }
+            animation.addEventListener("DOMLoaded", function () {
+                gsap.to(playhead, {
+                    frame: animation.totalFrames - 1,
+                    ease: "none",
+                    onUpdate: () => animation.goToAndStop(playhead.frame, true),
+                    scrollTrigger: st
+                });
+                ScrollTrigger.sort();
+                ScrollTrigger.refresh();
+            });
+            return animation;
+        }
+
+
+        let tl = gsap.timeline()
+        ScrollTrigger.create({
+            trigger: '.section-1',
+            scroller: 'body',
+            start: 'top+=10%',
+            end: 'bottom-=60%',
+            animation: tl.to(CSSRulePlugin.getRule(".hero > h1"), { duration: 3, cssRule: { fontSize: "6vw", alignSelf: "flex-start" } }).to(CSSRulePlugin.getRule(".hero"), { duration: 3, cssRule: { top: "25%" } }),
+            scrub: 3,
+            markers: false,
+        })
+        ScrollTrigger.create({
+            trigger: '.section-1',
+            scroller: 'body',
+            start: '58%',
+            end: '54%',
+            animation: gsap.to(".hero", {
+                y: -200,
+                duration: 3,
+                opacity: 1,
+            }),
+            scrub: 2,
+            markers: false,
+        });
+        ScrollTrigger.create({
+            trigger: '.section-1',
+            scroller: 'body',
+            start: '40%',
+            end: '40%',
+            animation: gsap.to(".box1", {
+                opacity: "1"
+            }),
+            scrub: 1,
+            markers: false,
+        });
+
+
+        let timeline = gsap.timeline()
+        ScrollTrigger.create({
+            trigger: '.section3',
+            scroller: 'body',
+            start: 'top+=10%',
+            end: 'bottom-=60%',
+            animation: timeline.to(CSSRulePlugin.getRule(".trigger > #heading2"), { duration: 3, cssRule: { fontSize: "6vw", alignSelf: "flex-start" } }).to(CSSRulePlugin.getRule(".trigger"), { duration: 3, cssRule: { top: "15%" } }),
+            scrub: 3,
+            markers: false,
+        })
+        ScrollTrigger.create({
+            trigger: '.section3',
+            scroller: 'body',
+            start: '57%',
+            end: '56%',
+            animation: gsap.to(".trigger", {
+                y: -150,
+                duration: 3,
+                opacity: 1,
+            }),
+            scrub: 3,
+            markers: false,
+        });
+        ScrollTrigger.create({
+            trigger: '.section3',
+            scroller: 'body',
+            start: '40%',
+            end: '40%',
+            animation: gsap.to(".box2", {
+                opacity: "1"
+            }),
+            scrub: 1,
+            markers: false,
+        });
+        let timeline1 = gsap.timeline()
+        ScrollTrigger.create({
+            trigger: '.section4',
+            scroller: 'body',
+            start: 'top+=10%',
+            end: 'bottom-=60%',
+            animation: timeline1.to(CSSRulePlugin.getRule(".trigger1 > #heading3"), { duration: 3, cssRule: { fontSize: "6vw", alignSelf: "flex-start" } }).to(CSSRulePlugin.getRule(".trigger1"), { duration: 3, cssRule: { top: "15%" } }),
+            scrub: 3,
+            markers: false,
+        })
+        ScrollTrigger.create({
+            trigger: '.section4',
+            scroller: 'body',
+            start: '55%',
+            end: '54%',
+            animation: gsap.to(".trigger1", {
+                y: -150,
+                duration: 3,
+                opacity: 1,
+            }),
+            scrub: 3,
+            markers: false,
+        });
+        ScrollTrigger.create({
+            trigger: '.section4',
+            scroller: 'body',
+            start: '40%',
+            end: '40%',
+            animation: gsap.to(".box3", {
+                opacity: "1"
+            }),
+            scrub: 1,
+            markers: false,
+        });
+        let timeline2 = gsap.timeline()
+        ScrollTrigger.create({
+            trigger: '.section5',
+            scroller: 'body',
+            start: 'top+=10%',
+            end: 'bottom-=60%',
+            animation: timeline2.to(CSSRulePlugin.getRule(".trigger2 > #heading4"), { duration: 3, cssRule: { fontSize: "6vw", alignSelf: "flex-start" } }).to(CSSRulePlugin.getRule(".trigger2"), { duration: 3, cssRule: { top: "15%" } }),
+            scrub: 3,
+            markers: false,
+        })
+        ScrollTrigger.create({
+            trigger: '.section5',
+            scroller: 'body',
+            start: '40%',
+            end: '40%',
+            animation: gsap.to(".box4", {
+                opacity: "1"
+            }),
+            scrub: 1,
+            markers: false,
+        });
+    </script>
+</body>
+
+</html>
